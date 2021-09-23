@@ -1,14 +1,29 @@
+import { BrowserRouter as Router, Route, Switch} from "react-router-dom";
 import ProductList from "./components/ProductList";
+import AddProduct from "./components/AddProduct";
+import EditProduct from "./components/EditProduct";
 
 function App() {
   return (
-    <div className="container">
-      <div class="coloumns">
-        <div class="coloumn is-half is-offset-one-quarter">
-        <ProductList />
+    <Router> 
+      <div className="container">
+      <div className="coloumns">
+        <div className="coloumn is-half is-offset-one-quarter">
+        <Switch>
+          <Route exact path="/">
+            <ProductList />
+          </Route>
+          <Route path="/add">
+            <AddProduct />
+          </Route>
+          <Route path="/edit/:id">
+            <EditProduct />
+          </Route>
+        </Switch>
         </div>
       </div>
     </div>
+    </Router>   
   );
 }
 
