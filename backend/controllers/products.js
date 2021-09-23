@@ -30,3 +30,31 @@ export const createProducts = async (req, res) => {
         res.json({message: error.message});
     }
 }
+
+export const updateProducts = async (req, res) => {
+    try {await Product.update(req.body, {
+        where: {
+            id: req.params.id
+        }
+    });
+        res.json({
+            "message": "Product Updated"
+        });
+    } catch (error) {
+        res.json({message: error.message});
+    }
+}
+
+export const deleteProducts = async (req, res) => {
+    try {await Product.destroy({
+        where: {
+            id: req.params.id
+        }
+    });
+        res.json({
+            "message": "Product Deleted"
+        });
+    } catch (error) {
+        res.json({message: error.message});
+    }
+}
